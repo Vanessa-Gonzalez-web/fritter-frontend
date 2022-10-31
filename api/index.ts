@@ -9,9 +9,9 @@ import dotenv from 'dotenv';
 import * as userValidator from '../server/user/middleware';
 import {userRouter} from '../server/user/router';
 import {freetRouter} from '../server/freet/router';
-import {contactInformationDisplayRouter} from 'server/contactInformationDisplay/router';
-import {followerRouter} from 'server/followers/router';
-import {groupTaggingRouter} from 'server/groupTagging/router';
+import {contactInformationDisplayRouter} from '../server/contactInformationDisplay/router';
+import {followerRouter} from '../server/followers/router';
+import {groupTaggingRouter} from '../server/groupTagging/router';
 import MongoStore from 'connect-mongo';
 
 // Load environmental variables
