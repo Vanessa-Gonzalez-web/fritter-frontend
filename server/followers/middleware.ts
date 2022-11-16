@@ -8,9 +8,10 @@ import FollowersCollection from './collection';
 const isUsernameGiven = (req: Request, res: Response, next: NextFunction) => {
   if (!req.body.username) {
     res.status(400).json({
-      error: {
-        username: 'Username must be given.'
-      }
+      // error: {
+      //   username: 'Username must be given.'
+      // }
+      error: 'Username must be given.'
     });
     return;
   }
@@ -24,9 +25,10 @@ const isUsernameGiven = (req: Request, res: Response, next: NextFunction) => {
 const isBothUsernamesGiven = (req: Request, res: Response, next: NextFunction) => {
   if (!req.body.usernameOfFollowed || !req.body.usernameOfFollower) {
     res.status(400).json({
-      error: {
-        username: 'Both usernames must be given.'
-      }
+      // error: {
+      //   username: 'Both usernames must be given.'
+      // }
+      error: 'Both usernames must be given.'
     });
     return;
   }
@@ -41,9 +43,10 @@ const isBothValidUsername = (req: Request, res: Response, next: NextFunction) =>
   const usernameRegex = /^\w+$/i;
   if (!usernameRegex.test(req.body.usernameOfFollowed) || !usernameRegex.test(req.body.usernameOfFollower)) {
     res.status(400).json({
-      error: {
-        usernames: 'Both usernames must be nonempty alphanumeric strings.'
-      }
+      // error: {
+      //   usernames: 'Both usernames must be nonempty alphanumeric strings.'
+      // }
+      error: 'Both usernames must be nonempty alphanumeric strings.'
     });
     return;
   }
@@ -65,9 +68,10 @@ const isUsernameNotAlreadyInUse = async (req: Request, res: Response, next: Next
   }
 
   res.status(409).json({
-    error: {
-      username: 'Follower view for this username already exists.'
-    }
+    // error: {
+    //   username: 'Follower view for this username already exists.'
+    // }
+    error: 'Follower view for this username already exists.'
   });
 };
 
@@ -79,9 +83,10 @@ const isUserFollowerInformationExists = async (req: Request, res: Response, next
 
   if (!followers) {
     res.status(404).json({
-      error: {
-        userFollowerViewNotFound: 'User does not have created follower view.'
-      }
+      // error: {
+      //   userFollowerViewNotFound: 'User does not have created follower view.'
+      // }
+      error: 'User does not have created follower view.'
     });
     return;
   }
@@ -98,9 +103,10 @@ const isBothUserFollowerInformationExists = async (req: Request, res: Response, 
 
   if (!user1 || !user2) {
     res.status(404).json({
-      error: {
-        userFollowerViewNotFound: 'User does not have created follower view.'
-      }
+      // error: {
+      //   userFollowerViewNotFound: 'User does not have created follower view.'
+      // }
+      error: 'User does not have created follower view.'
     });
     return;
   }

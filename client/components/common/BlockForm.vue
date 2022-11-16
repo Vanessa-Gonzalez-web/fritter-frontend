@@ -60,9 +60,16 @@ export default {
       method: 'GET', // Form request method
       hasBody: false, // Whether or not form request has a body
       setUsername: false, // Whether or not stored username should be updated after form submission
+
+      contactDisplayed: null,
+      contactNumber: null,
+      contactEmail: null,
+      contactWebsite: null,
+      contactAddress: null,
+
       refreshFreets: false, // Whether or not stored freets should be updated after form submission
       alerts: {}, // Displays success/error messages encountered during form submission
-      callback: null // Function to run after successful form submission
+      callback: null, // Function to run after successful form submission
     };
   },
   methods: {
@@ -106,6 +113,37 @@ export default {
         if (this.callback) {
           this.callback();
         }
+
+        if (this.setContactDisplay) {
+          const text = await r.text();
+          const res = text ? JSON.parse(text) : {contactInformationDisplay: null};
+          this.$store.commit('setContactDisplay', res.contactInformationDisplay ? res.contactInformationDisplay.contactDisplayed : null);
+        }
+
+        if (this.setContactNumber) {
+          const text = await r.text();
+          const res = text ? JSON.parse(text) : {contactInformationDisplay: null};
+          this.$store.commit('setContactNumber', res.contactInformationDisplay ? res.contactInformationDisplay.contactNumber : null);
+        }
+
+        if (this.setContactEmail) {
+          const text = await r.text();
+          const res = text ? JSON.parse(text) : {contactInformationDisplay: null};
+          this.$store.commit('setContactEmail', res.contactInformationDisplay ? res.contactInformationDisplay.contactEmail : null);
+        }
+
+        if (this.setContactWebsite) {
+          const text = await r.text();
+          const res = text ? JSON.parse(text) : {contactInformationDisplay: null};
+          this.$store.commit('setContactWebsite', res.contactInformationDisplay ? res.contactInformationDisplay.contactWebsite : null);
+        }
+
+        if (this.setContactAddress) {
+          const text = await r.text();
+          const res = text ? JSON.parse(text) : {contactInformationDisplay: null};
+          this.$store.commit('setContactAddress', res.contactInformationDisplay ? res.contactInformationDisplay.contactAddress : null);
+        }
+
       } catch (e) {
         this.$set(this.alerts, e, 'error');
         setTimeout(() => this.$delete(this.alerts, e), 3000);

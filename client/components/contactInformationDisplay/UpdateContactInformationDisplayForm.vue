@@ -1,15 +1,15 @@
-<!-- Form for creating contact information display (block style) -->
+<!-- Form for updating contact information display (block style) -->
 
 <script>
 import BlockForm from '@/components/common/BlockForm.vue';
 
 export default {
-  name: 'CreateContactInformationForm',
+  name: 'UpdateContactInformationForm',
   mixins: [BlockForm],
   data() {
     return {
       url: '/api/contactInformationDisplay',
-      method: 'POST',
+      method: 'PUT',
       hasBody: true,
       setContactDisplay: true,
       setUsername: true,
@@ -25,9 +25,9 @@ export default {
       {id: 'contactWebsite', label: 'Contact Website', value: ''},
       {id: 'contactAddress', label: 'Contact Address', value: ''}
       ],
-      title: 'Create Contact Information Display for User',
+      title: 'Update Contact Information Display for User',
       callback: () => {
-        const message = 'Successfully created a contact information display!';
+        const message = 'Successfully updated a contact information display!';
         this.$set(this.alerts, message, 'success');
         setTimeout(() => this.$delete(this.alerts, message), 3000);
       }

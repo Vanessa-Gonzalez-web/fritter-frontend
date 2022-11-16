@@ -26,6 +26,18 @@
       >
         Login
       </router-link>
+      <router-link
+        v-if="$store.state.username"
+        to="/profile"
+      >
+        Profile
+      </router-link>
+      <router-link
+        v-if="$store.state.username"
+        to="/group"
+      >
+        Groups
+      </router-link>
     </div>
     <section class="alerts">
       <article

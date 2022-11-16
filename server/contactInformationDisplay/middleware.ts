@@ -9,9 +9,10 @@ const isValidNumber = (req: Request, res: Response, next: NextFunction) => {
   const contactNumberRegex = /[0-9]{10}/;
   if (!contactNumberRegex.test(req.body.contactNumber) && req.body.contactNumber !== '') {
     res.status(400).json({
-      error: {
-        Number: 'Number must be a 10 digit long string of numeric characters.'
-      }
+      // error: {
+      //   Number: 'Number must be a 10 digit long string of numeric characters.'
+      // }
+      error: 'Number must be a 10 digit long string of numeric characters.'
     });
     return;
   }
@@ -25,9 +26,10 @@ const isValidNumber = (req: Request, res: Response, next: NextFunction) => {
 const isUsernameGiven = (req: Request, res: Response, next: NextFunction) => {
   if (!req.body.username) {
     res.status(400).json({
-      error: {
-        username: 'Username must be given.'
-      }
+      // error: {
+      //   username: 'Username must be given.'
+      // }
+      error: 'Username must be given.'
     });
     return;
   }
@@ -41,9 +43,10 @@ const isUsernameGiven = (req: Request, res: Response, next: NextFunction) => {
 const isDisplayGiven = (req: Request, res: Response, next: NextFunction) => {
   if (!req.body.contactInformationDisplayed) {
     res.status(400).json({
-      error: {
-        contactInformationDisplayed: 'Must determine if information will be displayed.'
-      }
+      // error: {
+      //   contactInformationDisplayed: 'Must determine if information will be displayed.'
+      // }
+      error: 'Must determine if information will be displayed.'
     });
     return;
   }
@@ -57,9 +60,10 @@ const isDisplayGiven = (req: Request, res: Response, next: NextFunction) => {
 const isValidBool = (req: Request, res: Response, next: NextFunction) => {
   if (!(req.body.contactInformationDisplayed === 'yes' || req.body.contactInformationDisplayed === 'no')) {
     res.status(400).json({
-      error: {
-        contactInformationDisplayed: 'value must be either yes or no (case sensitive)'
-      }
+      // error: {
+      //   contactInformationDisplayed: 'value must be either yes or no (case sensitive)'
+      // }
+      error: 'value must be either yes or no (case sensitive)'
     });
     return;
   }
@@ -81,9 +85,10 @@ const isUsernameNotAlreadyInUse = async (req: Request, res: Response, next: Next
   }
 
   res.status(409).json({
-    error: {
-      username: 'Contact Information for this username already exists.'
-    }
+    // error: {
+    //   username: 'Contact Information for this username already exists.'
+    // }
+    error: 'Contact Information for this username already exists.'
   });
 };
 
@@ -95,9 +100,10 @@ const isUserContactInformationExists = async (req: Request, res: Response, next:
 
   if (!contactInformationDisplay) {
     res.status(404).json({
-      error: {
-        userContactInformationNotFound: 'User does not have created contact information.'
-      }
+      // error: {
+      //   userContactInformationNotFound: 'User does not have created contact information.'
+      // }
+      error: 'User does not have created contact information.'
     });
     return;
   }
